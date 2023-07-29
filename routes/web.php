@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+    // Your admin routes here
+    Route::get('/admin', function () {
+        return 'Welcome Admin';
+    });
+});
