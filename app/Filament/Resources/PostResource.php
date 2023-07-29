@@ -21,6 +21,7 @@ use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
@@ -67,6 +68,7 @@ class PostResource extends Resource
                     ->query(fn (Builder $query): Builder => $query->where('is_published', true)),
                 Filter::make('UnPublished')
                     ->query(fn (Builder $query): Builder => $query->where('is_published', false)),
+                SelectFilter::make('category')->relationship('category', 'name')
 
             ])
             ->actions([
